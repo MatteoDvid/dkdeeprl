@@ -1,0 +1,111 @@
+# Donkey Kong DQN Configuration
+# Ultra-optimized hyperparameters for best performance
+
+# Environment Settings
+environment:
+  name: "ALE/DonkeyKong-v5"
+  render_mode: null  # Set to 'human' for visualization, null for training
+  frame_skip: 4
+  repeat_action_probability: 0.0
+  full_action_space: false  # Use reduced action space (9 actions instead of 18)
+
+# Preprocessing
+preprocessing:
+  frame_height: 84
+  frame_width: 84
+  frame_stack: 4  # Stack 4 frames for temporal information
+  grayscale: true
+  normalize: true
+  crop_top: 30  # Remove score area at top
+
+# Network Architecture
+network:
+  type: "dueling_dqn"  # Options: "dqn", "dueling_dqn"
+  conv_layers:
+    - filters: 32
+      kernel_size: 8
+      stride: 4
+    - filters: 64
+      kernel_size: 4
+      stride: 2
+    - filters: 64
+      kernel_size: 3
+      stride: 1
+  fc_hidden_size: 512
+
+# DQN Algorithm
+algorithm:
+  type: "double_dqn"  # Options: "dqn", "double_dqn"
+  gamma: 0.99  # Discount factor
+  learning_rate: 0.00025
+  adam_epsilon: 1.0e-4
+  gradient_clip_norm: 10.0
+  loss_function: "huber"  # Options: "mse", "huber"
+
+# Replay Buffer
+replay_buffer:
+  type: "prioritized"  # Options: "standard", "prioritized"
+  capacity: 100000
+  batch_size: 64  # Increased for GPU (was 32)
+
+  # Prioritized Experience Replay (PER) parameters
+  per_alpha: 0.6  # How much prioritization (0 = uniform, 1 = full)
+  per_beta_start: 0.4  # Importance sampling weight
+  per_beta_end: 1.0
+  per_beta_annealing_steps: 100000
+  per_epsilon: 1.0e-6  # Small constant to ensure non-zero priorities
+
+# Exploration Strategy
+exploration:
+  strategy: "epsilon_greedy"  # Options: "epsilon_greedy", "noisy_nets"
+  epsilon_start: 1.0
+  epsilon_end: 0.01
+  epsilon_decay_steps: 100000  # Linear decay over this many steps
+
+# Training
+training:
+  num_episodes: 2000
+  max_steps_per_episode: 10000
+  warmup_steps: 50000  # Random actions before training starts
+  train_frequency: 4  # Train every N steps
+  target_network_update_freq: 1000  # Hard update every N steps
+  save_frequency: 100  # Save checkpoint every N episodes
+  eval_frequency: 50  # Evaluate every N episodes
+
+# Evaluation
+evaluation:
+  num_episodes: 5
+  deterministic: true  # No exploration during eval
+  record_video: true
+  video_frequency: 10  # Record video every N eval runs
+
+# Logging
+logging:
+  log_dir: "logs"
+  tensorboard: true
+  console_log_frequency: 10  # Print stats every N episodes
+  metrics_save_frequency: 1  # Save metrics every N episodes
+
+# Checkpointing
+checkpointing:
+  checkpoint_dir: "checkpoints"
+  save_best_only: false
+  save_optimizer_state: true
+
+# Device
+device: "cuda"  # Options: "cuda", "cpu", "auto"
+
+# Reproducibility
+seed: 42
+
+# Reward Shaping (Optional - set to false to use raw rewards)
+reward_shaping:
+  enabled: false  # Set to true to enable custom reward shaping
+  clip_rewards: true
+  clip_range: [-1, 1]
+
+# Advanced Options
+advanced:
+  use_mixed_precision: false  # AMP for faster training (if GPU available)
+  parallel_envs: 1  # Number of parallel environments
+  compile_model: false  # PyTorch 2.0+ compile (experimental)

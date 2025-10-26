@@ -1,0 +1,27 @@
+[project]
+name = "projetintermediatedeepl"
+version = "0.1.0"
+description = "PPO Implementation for Atari Donkey Kong - Reinforcement Learning Project"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.24.0",
+    "gymnasium[atari,accept-rom-license]>=0.29.0",
+    "ale-py>=0.8.0",
+    "matplotlib>=3.7.0",
+    "opencv-python>=4.8.0",
+    "pandas>=2.0.0",
+    "tensorboard>=2.13.0",
+    "tqdm>=4.65.0",
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cuda" }
+torchvision = { index = "pytorch-cuda" }
+
+[[tool.uv.index]]
+name = "pytorch-cuda"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
