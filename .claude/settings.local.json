@@ -16,7 +16,8 @@
       "Bash(python train.py:*)",
       "Bash(cat:*)",
       "WebSearch",
-      "WebFetch(domain:johndeleo.dev)"
+      "WebFetch(domain:johndeleo.dev)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
