@@ -1,13 +1,13 @@
-# Donkey Kong DQN Configuration
+# Breakout DQN Configuration
 # Ultra-optimized hyperparameters for best performance
 
 # Environment Settings
 environment:
-  name: "ALE/DonkeyKong-v5"
+  name: "ALE/Breakout-v5"
   render_mode: null  # Set to 'human' for visualization, null for training
   frame_skip: 4
   repeat_action_probability: 0.0
-  full_action_space: false  # Use reduced action space (9 actions instead of 18)
+  full_action_space: false  # Use reduced action space (4 actions: NOOP, FIRE, RIGHT, LEFT)
 
 # Preprocessing
 preprocessing:
@@ -16,7 +16,7 @@ preprocessing:
   frame_stack: 4  # Stack 4 frames for temporal information
   grayscale: true
   normalize: true
-  crop_top: 30  # Remove score area at top
+  crop_top: 32  # Remove score area at top (standard for Breakout)
 
 # Network Architecture
 network:

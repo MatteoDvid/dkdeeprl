@@ -38,7 +38,7 @@ class Trainer:
     def __init__(
         self,
         agent: DQNAgent,
-        env_name: str = "ALE/DonkeyKong-v5",
+        env_name: str = "ALE/Breakout-v5",
         # Preprocessing
         frame_height: int = 84,
         frame_width: int = 84,
@@ -360,7 +360,8 @@ class Trainer:
             episode_reward = 0
             done = False
 
-            while not done:
+            # Protection against infinite episodes
+            for step in range(self.max_steps_per_episode):
                 # Greedy action (no exploration)
                 action = self.agent.select_action(state, training=False)
 
@@ -371,6 +372,9 @@ class Trainer:
                 # Process
                 state = self.atari_wrapper.step(obs)
                 episode_reward += reward
+
+                if done:
+                    break
 
             eval_rewards.append(episode_reward)
 
@@ -447,7 +451,7 @@ def test_trainer():
     # Create trainer (short training for test)
     trainer = Trainer(
         agent=agent,
-        env_name="ALE/DonkeyKong-v5",
+        env_name="ALE/Breakout-v5",
         num_episodes=5,
         warmup_steps=100,
         train_frequency=4,
@@ -459,7 +463,7 @@ def test_trainer():
     )
 
     print("\nRunning short training test...")
-    # Note: This will fail if Donkey Kong is not installed
+    # Note: This will fail if Breakout is not installed
     # But demonstrates the trainer structure
 
     print("\n✓ Trainer test structure validated!")

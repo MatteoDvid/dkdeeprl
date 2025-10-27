@@ -3,7 +3,7 @@ Test Environment Setup
 
 Verifies that:
 1. All dependencies are installed
-2. Donkey Kong environment works
+2. Breakout environment works
 3. Preprocessing pipeline works
 4. Network architectures work
 5. Agent can be created and run
@@ -51,9 +51,9 @@ def test_atari_roms():
         import gymnasium as gym
         import ale_py
 
-        # Try to create Donkey Kong environment
-        env = gym.make('ALE/DonkeyKong-v5')
-        print("✓ Donkey Kong environment available")
+        # Try to create Breakout environment
+        env = gym.make('ALE/Breakout-v5')
+        print("✓ Breakout environment available")
 
         # Get environment info
         print(f"  Action space: {env.action_space}")
@@ -71,7 +71,7 @@ def test_atari_roms():
         return True
 
     except Exception as e:
-        print(f"✗ Donkey Kong environment error: {e}")
+        print(f"✗ Breakout environment error: {e}")
         print("\nTo install Atari ROMs, run:")
         print("  pip install 'gymnasium[atari]' ale-py")
         print("  pip install autorom[accept-rom-license]")
@@ -285,7 +285,7 @@ def test_config():
 
 
 def test_full_integration():
-    """Test full integration with actual Donkey Kong environment."""
+    """Test full integration with actual Breakout environment."""
     print("\n" + "="*60)
     print("TESTING FULL INTEGRATION")
     print("="*60)
@@ -297,7 +297,7 @@ def test_full_integration():
         from src.preprocessing import AtariWrapper
 
         # Create environment
-        env = gym.make('ALE/DonkeyKong-v5')
+        env = gym.make('ALE/Breakout-v5')
         print(f"✓ Environment created")
 
         # Create wrapper
@@ -356,7 +356,7 @@ def test_full_integration():
 def main():
     """Run all tests."""
     print("\n" + "="*70)
-    print(" "*15 + "DONKEY KONG DQN - ENVIRONMENT TESTS")
+    print(" "*15 + "BREAKOUT DQN - ENVIRONMENT TESTS")
     print("="*70)
 
     results = {}

@@ -1,5 +1,5 @@
 """
-Donkey Kong Deep RL Project
+Breakout Deep RL Project
 Deep Q-Network with Dueling Architecture and Prioritized Experience Replay
 """
 

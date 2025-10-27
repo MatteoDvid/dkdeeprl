@@ -275,7 +275,7 @@ class RewardShaper:
         """
         shaped_reward = raw_reward
 
-        # Custom shaping (Donkey Kong specific)
+        # Custom shaping (game specific)
         if self.custom_shaping:
             # Bonus for vertical progress (climbing)
             if 'y_position' in info and 'y_position' in self.prev_info:

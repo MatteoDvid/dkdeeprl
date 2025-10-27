@@ -1,5 +1,5 @@
 """
-Evaluation Script for Donkey Kong DQN Agent
+Evaluation Script for Breakout DQN Agent
 
 Loads trained agent and evaluates performance.
 
@@ -133,7 +133,7 @@ class Evaluator:
                 env,
                 video_folder=video_dir,
                 episode_trigger=lambda x: True,  # Record all episodes
-                name_prefix="donkey_kong_eval"
+                name_prefix="breakout_eval"
             )
         else:
             env = gym.make(self.env_name, render_mode=render_mode)
@@ -488,7 +488,7 @@ def parse_args():
 def main():
     """Main evaluation function."""
     print("="*60)
-    print("DONKEY KONG DQN EVALUATION")
+    print("BREAKOUT DQN EVALUATION")
     print("="*60)
 
     # Parse arguments

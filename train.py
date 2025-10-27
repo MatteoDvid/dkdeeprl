@@ -1,5 +1,5 @@
 """
-Training Script for Donkey Kong DQN Agent
+Training Script for Breakout DQN Agent
 
 Loads configuration and runs training.
 
@@ -176,7 +176,7 @@ def create_trainer_from_config(agent: DQNAgent, config: dict) -> Trainer:
 def parse_args():
     """Parse command line arguments."""
     parser = argparse.ArgumentParser(
-        description="Train DQN agent on Donkey Kong"
+        description="Train DQN agent on Breakout"
     )
 
     parser.add_argument(
@@ -220,7 +220,7 @@ def parse_args():
 def main():
     """Main training function."""
     print("="*60)
-    print("DONKEY KONG DQN TRAINING")
+    print("BREAKOUT DQN TRAINING")
     print("="*60)
 
     # Parse arguments

@@ -1,5 +1,5 @@
 """
-Donkey Kong DQN - Main Entry Point
+Breakout DQN - Main Entry Point
 
 Provides a simple menu interface for:
 - Testing the environment
@@ -15,10 +15,10 @@ import os
 def print_banner():
     """Print welcome banner."""
     print("\n" + "="*70)
-    print(" " * 15 + "🎮 DONKEY KONG DEEP REINFORCEMENT LEARNING 🎮")
+    print(" " * 15 + "🧱 BREAKOUT DEEP REINFORCEMENT LEARNING 🧱")
     print("="*70)
     print("\n  Implementation: Double DQN + Dueling + Prioritized Replay")
-    print("  Environment: ALE/DonkeyKong-v5")
+    print("  Environment: ALE/Breakout-v5")
     print("="*70 + "\n")
 
 
