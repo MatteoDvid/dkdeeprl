@@ -5,7 +5,7 @@ Implementation of Double DQN with Dueling Architecture and Prioritized Experienc
 ## Authors
 
 - Matteo David
-- Albert Fayol
+- Kirsten Chang
 
 ---
 
