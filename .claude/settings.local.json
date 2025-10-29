@@ -1,27 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Read(//c/Users/mdrag/Documents/Albert/m2/deeprl/**)",
-      "Bash(dir:*)",
-      "Bash(python -c:*)",
-      "Bash(nvidia-smi:*)",
-      "Bash(pip uninstall:*)",
-      "Bash(pip install:*)",
-      "Bash(uv pip uninstall:*)",
-      "Bash(uv pip install:*)",
-      "Bash(uv:*)",
-      "Bash(.venv/Scripts/python.exe -m pip:*)",
-      "Bash(python -m autorom:*)",
-      "Bash(.venv/Scripts/python.exe:*)",
-      "Bash(python train.py:*)",
-      "Bash(cat:*)",
-      "WebSearch",
-      "WebFetch(domain:johndeleo.dev)",
+      "Bash(git rm:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(awk:*)",
-      "Bash(find:*)"
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
